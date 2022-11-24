@@ -27,6 +27,6 @@ jobs:
         with:
           context: Dhtml/
           push: true
-          tags: index.docker.io/${{ secrets.DOCKERHUB_USERNAME }}/gahtml:${{ github.sha }}
+          tags: index.docker.io/${{ secrets.DOCKERHUB_USERNAME }}/gahtml:latest
           file: ./Dhtml/Dockerfile
           
