@@ -5,6 +5,8 @@ name: Build and deploy container app to Azure Web App - gahtml
 
 on:
   push:
+    paths:
+      - 'Dhtml/**'
     branches:
       - main
   workflow_dispatch:
@@ -29,9 +31,10 @@ jobs:
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
+        context: Dhtml/
         push: true
         tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_e432071a1a164168883d5ba8cca08e89 }}/dquisiest/gahtml:${{ github.sha }}
-        file: ./Dockerfile
+        file: ./Dhtml/Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
