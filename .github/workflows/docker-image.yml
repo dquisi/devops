@@ -1,0 +1,32 @@
+name: Docker Image CI
+
+on:
+  push:
+    paths:
+      - 'Dhtml/**'
+    branches:
+      - 'main'
+
+jobs:
+  build_push_dhtml:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      -
+        name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: Dhtml/
+          push: true
+          tags: index.docker.io/${{ secrets.DOCKERHUB_USERNAME }}/gahtml:${{ github.sha }}
+          file: ./Dhtml/Dockerfile
+          
