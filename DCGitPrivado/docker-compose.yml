@@ -1,0 +1,9 @@
+services:
+  angular:
+    image: 'devcorpecu/front:0.1'
+    build:
+        context: https://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@github.com/fmtacuri/prueba01-ups-factura.git#main:front
+        dockerfile: Dockerfile
+    container_name: angular
+    ports:
+      - "80:80"

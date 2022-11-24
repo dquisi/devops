@@ -1,0 +1,11 @@
+services:
+  spring:
+    image: 'ftacurip/spring-person:0.10'
+    container_name: spring
+    expose:
+      - "8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://ups.postgres.database.azure.com:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=tacuriU.2022
